@@ -22,9 +22,11 @@ pokeApi.getPokemonDetail = (pokemon) => {
         .then(convertPokeApiDetailToPokemon)
 }
 
+    //cria um objeto para receber a lista generica
 pokeApi.getPokemons = (offset = 0, limit = 5) => {
     const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
 
+    //retorna a lista e trata possiveis erros no processo
     return fetch(url)
         .then((response) => response.json())
         .then((jsonBody) => jsonBody.results)

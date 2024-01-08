@@ -6,6 +6,7 @@ const maxRecords = 151
 const limit = 10
 let offset = 0;
 
+    //cria um item em HTML ao carregar os dados da lista
 function convertPokemonToLi(pokemon) {
     return `
         <li class="pokemon ${pokemon.type}">
@@ -22,6 +23,7 @@ function convertPokemonToLi(pokemon) {
     `
 }
 
+    //carrega os dados da lista
 function loadPokemonItens(offset, limit) {
     pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
         const newHtml = pokemons.map(convertPokemonToLi).join('')
@@ -31,6 +33,7 @@ function loadPokemonItens(offset, limit) {
 
 loadPokemonItens(offset, limit)
 
+    //Ao clicar no botão, carrega nova pagina de dados e remove o botão ao chegar no fim do arquivo
 loadMoreButton.addEventListener('click', () => {
     offset += limit
     const qtdRecordsWithNexPage = offset + limit
